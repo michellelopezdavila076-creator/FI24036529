@@ -15,7 +15,7 @@ package PP2;
  * $ java Inverso 123
  * 123 → 321
  */
-public class inverso {
+public class Inverso {
     // Método principal
     public static void main(String[] args) {
         // Validar que se haya pasado un argumento
