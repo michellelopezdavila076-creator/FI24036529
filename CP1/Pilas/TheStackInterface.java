@@ -1,14 +1,13 @@
-public interface TheStackInterface<Type> {
+public interface TheStackInterface<T> {
+    Boolean push(T item);
+    T pop();
 
-    Boolean push(Type item);
-
-    Type pop();
-
-    Type peek();
+    T peek();
 
     Boolean empty();
-
+  
     Integer size();
 
     String print();
 }
+

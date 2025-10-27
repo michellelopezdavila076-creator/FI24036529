@@ -1,69 +1,76 @@
-import java.util.Random;
+// Fuente: ejemplos del curso y chatGPT
+// Se corrigió el método push() y se mejoraron pop() y peek().
+
 import java.util.Stack;
+import java.util.Random;
 
-public class TheStack<Type> implements TheStackInterface<Type> {
+public class TheStack<T> implements TheStackInterface<T> {
 
-    private Stack<Type> _stack;
+    private Stack<T> pila;
+    private int capacidad;
 
-    private Integer _capacity;
-
-    public TheStack(Integer capacity) {
-        _stack = new Stack<Type>();
-        _capacity = capacity;
+    public TheStack(int capacidad) {
+        this.capacidad = capacidad;
+        this.pila = new Stack<>();
     }
 
-    public Boolean push(Type item) {
-        var available = _stack.size() < _capacity;
-        if (available) {
-            push(item);
+    @Override
+    public Boolean push(T item) {
+        if (pila.size() < capacidad) {
+            pila.push(item);
+            return true;
         }
-        return available;
+        return false;
     }
 
-    public Type pop() {
-        return _stack.pop();
+    @Override
+    public T pop() {
+        return pila.isEmpty() ? null : pila.pop();
     }
 
-    public Type peek() {
-        return _stack.peek();
+    @Override
+    public T peek() {
+        return pila.isEmpty() ? null : pila.peek();
     }
 
-    public boolean empty() {
-        return _stack.isEmpty();
+    @Override
+    public Boolean empty() {
+        return pila.isEmpty();
     }
 
-    public int size() {
-        return _stack.size();
+    @Override
+    public Integer size() {
+        return pila.size();
     }
 
+    @Override
     public String print() {
-        return _stack.toString();
+        return pila.toString();
     }
 
     public static void main(String[] args) {
-        var capacity = Integer.parseInt(args[0]);
-        TheStackInterface<Double> stack = new TheStack<Double>(capacity);
+        int capacidad = Integer.parseInt(args[0]);
+        TheStackInterface<Double> stack = new TheStack<>(capacidad);
+        Random random = new Random();
+
         System.out.println("Pushing {capacity + 1}");
-        var random = new Random();
-        for (var n = 0; n <= capacity; n++) {
-            var number = random.nextDouble();
-            var pushed = stack.push(number);
-            System.out.println(" ↳ push(" + number + ") → " + pushed);
+        for (int i = 0; i <= capacidad; i++) {
+            double num = random.nextDouble();
+            System.out.println(" ↳ push(" + num + ") → " + stack.push(num));
         }
-        System.out.println();
-        System.out.println("Pushed {full}");
+
+        System.out.println("\nPushed {full}");
         System.out.println(" ↳ print() → " + stack.print());
         System.out.println("   ↳ peek() → " + stack.peek());
         System.out.println("   ↳ size() → " + stack.size());
         System.out.println("   ↳ empty() → " + stack.empty());
-        System.out.println();
-        System.out.println("Popping {capacity + 1}");
-        for (var n = 0; n <= capacity; n++) {
-            var popped = stack.pop();
-            System.out.println(" ↳ pop() → " + popped);
+
+        System.out.println("\nPopping {capacity + 1}");
+        for (int i = 0; i <= capacidad; i++) {
+            System.out.println(" ↳ pop() → " + stack.pop());
         }
-        System.out.println();
-        System.out.println("Popped {empty}");
+
+        System.out.println("\nPopped {empty}");
         System.out.println(" ↳ print() → " + stack.print());
         System.out.println("   ↳ peek() → " + stack.peek());
         System.out.println("   ↳ size() → " + stack.size());
