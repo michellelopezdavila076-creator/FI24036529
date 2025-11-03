@@ -1,61 +1,69 @@
-# PP3
-
-**Nombre:** Julissa Lopez  
-**Carné:** FI24036529
-
- Objetivo
-
-Familiarizarse con la estructura de **lista (List)** en el lenguaje de programación **Java**, creando un programa capaz de trabajar con una **lista circular doblemente enlazada** que utilice nodos con valores naturales entre cero y nueve generados aleatoriamente.
+#  README – PP3
 
 
+##  Datos del estudiante
 
- ## Especificaciones funcionales
-
-El programa implementa los siguientes métodos definidos por la interfaz genérica `ListInterface`:
-
-| **addFirst(T value)** | Agrega un nodo al inicio de la lista. No tiene restricción de capacidad. |
-| **addLast(T value)** | Agrega un nodo al final de la lista. No tiene restricción de capacidad. |
-| **removeFirst()** | Elimina el primer nodo de la lista retornando su valor. Si la lista está vacía, retorna `null`. |
-| **removeLast()** | Elimina el último nodo de la lista retornando su valor. Si la lista está vacía, retorna `null`. |
-
-Al ejecutarse el programa con un parámetro **n**, se realizan los siguientes pasos:
-
-1. Se generan **n × 4 números aleatorios** (entre 0 y 9).  
-2. Se insertan `n × 2` nodos al inicio (`addFirst`) y `n × 2` al final (`addLast`).  
-3. Se eliminan `n` nodos desde el inicio (`removeFirst`) y `n` desde el final (`removeLast`).  
-4. Se eliminan todos los nodos restantes para verificar los casos de lista vacía.  
-5. Se imprime el estado de la lista en cada operación.
-
-#  Preguntas y Respuestas – PP3  
- 
-
-##  1️⃣ Si tuviera que implementar una estructura tipo **Cola (Queue)**, ¿qué tipo de lista utilizaría y por qué? ¿Y para una estructura tipo **Pila (Stack)?**
-
-### **Cola (Queue):**
-Usaría una **lista doblemente enlazada** o una **lista circular doblemente enlazada**, porque este tipo de lista permite **insertar elementos al final** (`enqueue`) y **eliminar desde el inicio** (`dequeue`) en tiempo constante **O(1)**.  
-Gracias a que mantiene referencias a `head` y `tail`, las operaciones son directas sin necesidad de recorrer toda la estructura.  
-Esto hace que sea ideal para representar colas donde se requiere un orden FIFO (First In, First Out).
-
-###  **Pila (Stack):**
-Usaría una **lista simplemente enlazada**, ya que en una pila solo se necesita trabajar con un extremo. 
-Las operaciones `push` (insertar) y `pop` (eliminar) se realizan en el mismo nodo, también en tiempo **O(1)**.  
-Además, su implementación es más ligera y eficiente en memoria que una lista doblemente enlazada, lo cual la hace perfecta para estructuras tipo LIFO (Last In, First Out).
-
----
-
-## 2️⃣ ¿Cuál podría ser una ventaja y una desventaja de utilizar una estructura de tipo lista creada por usted mismo, en vez de las opciones provistas directamente por los módulos estándar de Java (como `List`)?
-
-### **Ventaja:**
-- Permite entender cómo funcionan internamente las estructuras de datos enlazadas.  
-- Da control total sobre la manipulación de los nodos, optimización de operaciones y comportamiento interno.  
-- Facilita personalizar la estructura según las necesidades del programa o el rendimiento buscado.  
-- Fomenta el aprendizaje de conceptos como punteros, referencias, memoria dinámica y recursividad.
-
-### **Desventaja:**
-- Se requiere más tiempo para diseñar, probar y depurar la implementación.  
-- Es más propensa a errores lógicos o referencias nulas.  
+**Nombre:** Julissa Lopez D
+**Carné:** FI24036529  
 
 
 
+##  IDE o editor utilizado
+
+- **Visual Studio Code (VS Code)**  
+- Versión de Java utilizada: **OpenJDK 21 (LTS)**  
+- Compilación y ejecución realizadas mediante la terminal integrada con los comandos `javac` y `java`.
 
 
+
+##  Páginas web consultadas
+
+Durante el desarrollo de este proyecto, consulté diferentes recursos en línea para reforzar mi comprensión sobre el tema y buscar ejemplos de implementación de listas circulares doblemente enlazadas en Java.  
+Entre los sitios más útiles se encuentran:
+
+- [Oracle Java Documentation](https://docs.oracle.com/javase/21/docs/api/) – para revisar documentación oficial del lenguaje.  
+- [Baeldung – Linked Lists in Java](https://www.baeldung.com/java-linked-list) – para entender cómo funcionan las listas enlazadas y sus operaciones básicas.  
+- [Stack Overflow – Circular Doubly Linked List Implementation](https://stackoverflow.com/questions/45315611) – para analizar ejemplos de código similares al requerido en este trabajo.  
+- [Geeks for Geeks – Doubly Circular Linked List](https://www.geeksforgeeks.org/doubly-circular-linked-list/) – para repasar la teoría sobre los punteros `next` y `prev` en estructuras circulares.
+
+## Uso de herramientas de inteligencia artificial
+
+Durante la elaboración de esta práctica utilicé **ChatGPT** (modelo GPT-5) como **herramienta de apoyo personal**, únicamente para **consultar explicaciones teóricas y verificar la lógica** de algunos métodos como `addFirst`, `addLast`, `removeFirst` y `removeLast`.  
+No copié código directamente, sino que me basé en las respuestas obtenidas para **entender mejor el funcionamiento** de una lista circular doblemente enlazada y luego redactar mi propia versión del programa.  
+
+Además, utilicé la herramienta para redactar y revisar el formato de este documento `README.md`, asegurándome de aplicar correctamente la sintaxis Markdown.  
+
+
+## Preguntas y respuestas
+
+
+### 1. Si tuviera que implementar una estructura tipo **Cola (Queue)**, ¿qué tipo de lista (simple, circular, doblemente enlazada o circular doblemente enlazada) utilizaría y por qué? ¿Y para una estructura tipo **Pila (Stack)?**
+
+### Cola (Queue):
+Utilizaría una **lista doblemente enlazada** o una **lista circular doblemente enlazada**, ya que permiten agregar elementos al final (`enqueue`) y eliminar desde el inicio (`dequeue`) de forma eficiente en tiempo **O(1)**.  
+Estas estructuras son ideales para implementar colas, ya que mantienen punteros tanto al primer nodo (`head`) como al último (`tail`), lo que evita recorrer toda la lista en cada operación.
+
+####  Pila (Stack):
+Para una pila, usaría una **lista simplemente enlazada**, porque solo se necesita trabajar con un extremo (la cima).  
+Las operaciones de inserción (`push`) y eliminación (`pop`) se realizan en el mismo nodo, también en tiempo **O(1)**.  
+Además, es una estructura más sencilla, ligera y suficiente para este tipo de comportamiento (LIFO: Last In, First Out).
+
+
+### 2. ¿Cuál cree que podría ser una **ventaja** y una **desventaja** de utilizar una estructura de tipo lista creada por usted mismo, en vez de las opciones provistas directamente por los módulos estándar de Java (como por ejemplo `List`)?  
+
+####  Ventaja:
+- Me permite **comprender mejor el funcionamiento interno** de las estructuras enlazadas y cómo se manejan los punteros y la memoria.  
+- Puedo **personalizar** la estructura según las necesidades del programa.  
+- Refuerza mis conocimientos en **programación orientada a objetos** y en el manejo de nodos en Java.
+
+#### Desventaja:
+- La implementación manual **toma más tiempo** y puede ser propensa a errores lógicos o referencias nulas 
+- En comparación, las clases estándar de Java como `ArrayList` o `LinkedList` ya están **optimizadas y probadas**, por lo que son más confiables para proyectos reales.
+
+
+##  Conclusión
+
+Esta práctica me ayudó a **entender cómo funcionan las listas circulares doblemente enlazadas**, el rol de los punteros `next` y `prev`, y la importancia de mantener la conexión entre el primer y último nodo.  
+También fortalecí mis habilidades en **manipulación de estructuras dinámicas**, **control de referencias** y en la aplicación de los principios de la **programación orientada a objetos** en Java.  
+
+Considero que el uso responsable de herramientas como ChatGPT puede ser una forma de **reforzar el aprendizaje**, siempre y cuando se utilicen como guía y no como sustituto del trabajo propio.
