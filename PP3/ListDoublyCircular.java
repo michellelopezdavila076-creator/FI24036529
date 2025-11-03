@@ -3,29 +3,112 @@ import java.util.Random;
 
 public class ListDoublyCircular<T> implements ListInterface<T> {
 
-    private NodeDoubly<T> head = null; // First, Front, Initial node
-    private NodeDoubly<T> tail = null; // Last node
+    private NodeDoubly<T> head = null; // Primer nodo (inicio)
+    private NodeDoubly<T> tail = null; // Último nodo (final)
 
     public ListDoublyCircular() {
         head = null;
         tail = null;
     }
 
+    
+    // MÉTODO: addFirst()
+    // Agrega un nuevo nodo al inicio de la lista.
+    
     public void addFirst(T value) {
+        NodeDoubly<T> newNode = new NodeDoubly<>(value); // Crear nuevo nodo con el valor recibido
+
+        if (head == null) {
+            // Caso 1: la lista está vacía
+            // El nuevo nodo se apunta a sí mismo (circularidad)
+            head = tail = newNode;
+            newNode.next = newNode;
+            newNode.prev = newNode;
+        } else {
+            // Caso 2: la lista tiene al menos un elemento
+            // Enlazar el nuevo nodo antes del head actual
+            newNode.next = head;   // el nuevo apunta al que era head
+            newNode.prev = tail;   // su anterior será el tail actual
+            head.prev = newNode;   // el head actual apunta hacia atrás al nuevo nodo
+            tail.next = newNode;   // el tail apunta hacia adelante al nuevo nodo
+            head = newNode;        // el nuevo nodo se convierte en el head
+        }
     }
 
+    
+    // MÉTODO: addLast()
+    // Agrega un nuevo nodo al final de la lista.
+    
     public void addLast(T value) {
+        NodeDoubly<T> newNode = new NodeDoubly<>(value); // Crear nuevo nodo
+
+        if (tail == null) {
+            // Caso 1: lista vacía (mismo comportamiento que addFirst)
+            head = tail = newNode;
+            newNode.next = newNode;
+            newNode.prev = newNode;
+        } else {
+            // Caso 2: lista con elementos
+            newNode.prev = tail;   // el nuevo apunta hacia atrás al antiguo tail
+            newNode.next = head;   // y hacia adelante al head para mantener el círculo
+            tail.next = newNode;   // el tail apunta hacia el nuevo nodo
+            head.prev = newNode;   // el head apunta hacia atrás al nuevo nodo
+            tail = newNode;        // el nuevo nodo se convierte en el nuevo tail
+        }
     }
 
+   
+    // MÉTODO: removeFirst()
+    // Elimina el primer nodo (head) y devuelve su valor.
+    // Si la lista está vacía, retorna null.
+    
     public T removeFirst() {
-        T first = null;
-        return first;
+        if (head == null) {
+            // Caso: lista vacía
+            return null;
+        }
+
+        T first = head.data; // Guardar el valor del nodo eliminado
+
+        if (head == tail) {
+            // Caso: solo hay un elemento en la lista
+            head = tail = null; // la lista queda vacía
+        } else {
+            // Caso: hay más de un elemento
+            head = head.next;   // mover el head al siguiente nodo
+            head.prev = tail;   // mantener el enlace circular hacia atrás
+            tail.next = head;   // mantener el enlace circular hacia adelante
+        }
+
+        return first; // devolver el valor eliminado
+    }
+    // MÉTODO: removeLast()
+    // Elimina el último nodo (tail) y devuelve su valor.
+    // Si la lista está vacía, retorna null.
+    
+    public T removeLast() {
+        if (tail == null) {
+            // Caso: lista vacía
+            return null;
+        }
+
+        T last = tail.data; // Guardar el valor del nodo eliminado
+
+        if (head == tail) {
+            // Caso: solo hay un nodo
+            head = tail = null; // lista vacía
+        } else {
+            // Caso: hay más de un nodo
+            tail = tail.prev;   // mover el tail hacia atrás
+            tail.next = head;   // mantener la conexión circular hacia adelante
+            head.prev = tail;   // mantener la conexión circular hacia atrás
+        }
+
+        return last; // devolver el valor eliminado
     }
 
-    public T removeLast() {
-        T last = null;
-        return last;
-    }
+    // LOS SIGUIENTES MÉTODOS YA ESTABAN IMPLEMENTADOS POR EL PROFESOR
+  
 
     public T getFirst() {
         return head != null ? head.data : null;
@@ -129,3 +212,6 @@ public class ListDoublyCircular<T> implements ListInterface<T> {
         list.printList();
     }
 }
+
+    
+
