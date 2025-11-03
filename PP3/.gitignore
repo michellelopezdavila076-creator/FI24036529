@@ -1,0 +1,15 @@
+# Archivos compilados
+*.class
+*.jar
+*.war
+*.ear
+*.iml
+
+# Carpetas temporales
+/out/
+/bin/
+/target/
+
+# Configuración de IDEs
+/.idea/
+/.vscode/
