@@ -6,7 +6,9 @@
 
 ---
 
-##  Curso  Esta práctica tiene como propósito implementar un **árbol binario de búsqueda (Binary Search Tree)** utilizando un **arreglo estático** como estructura principal, en lugar de nodos enlazados o referencias dinámicas.  
+##  Curso  
+
+Esta práctica tiene como propósito implementar un **árbol binario de búsqueda (Binary Search Tree)** utilizando un **arreglo estático** como estructura principal, en lugar de nodos enlazados o referencias dinámicas.  
 
 El enfoque de este trabajo es comprender cómo un árbol binario puede ser representado completamente mediante posiciones dentro de un arreglo, aplicando fórmulas matemáticas para localizar hijos e interpretar la jerarquía del árbol.  
 
