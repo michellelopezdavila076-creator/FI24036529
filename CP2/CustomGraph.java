@@ -19,8 +19,12 @@ public class CustomGraph {
         int tgt = Arrays.binarySearch(_chars, target);
         
         // Actualizar
+        //Material de la clase con ayuda de ChatGPT
+        if (src >= 0 && tgt >= 0) {
+            _matrix[src][tgt] = _matrix[src][tgt] + 1;
+        }
     }
-
+    
     public String getMatrix() {
         var builder = new StringBuilder(" ");
         for (int index = 0; index < _chars.length; index++) {

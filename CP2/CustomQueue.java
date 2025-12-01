@@ -10,12 +10,27 @@ public class CustomQueue {
         var node = new QueueNode(index);
 
         // Actualizar
+        if (_head == null) {
+            _head = node;
+        } else {
+            QueueNode current = _head;
+            while (current.getNext() != null) {   
+                current = current.getNext();
+            }
+            current.setNext(node);                
+        }
     }
+    
 
     public int dequeue() {
         var index = -1;
 
         // Actualizar
+        //Material de la clase con ayuda de ChatGPT
+        if (_head != null) {
+            index = _head.getIndex();     
+            _head = _head.getNext();      
+       } 
 
         return index;
     }
@@ -24,7 +39,12 @@ public class CustomQueue {
         var size = 0;
 
         // Actualizar
-
+        //Material de la clase con ayuda de ChatGPT
+        QueueNode current = _head;
+        while (current != null) {
+            size++;
+            current = current.getNext();   
+        }
         return size;
     }
 
