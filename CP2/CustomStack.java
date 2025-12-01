@@ -10,8 +10,8 @@ public class CustomStack {
         var node = new StackNode(word);
 
         // Actualizar
-//Material de la clase con ayuda de ChatGPT
-        node.setNext(_head);
+        //Material de la clase con ayuda de ChatGPT
+        node.setNext(_head);   
         _head = node;
     }
 
@@ -19,19 +19,20 @@ public class CustomStack {
         String word = null;
 
         // Actualizar
-         //Material de la clase con ayuda de ChatGPT
+        // Material de la clase con ayuda de ChatGPT
         if (_head != null) {
-            word = _head.getWord();     
-            _head = _head.getNext();
+            word = _head.getWord();   
+            _head = _head.getNext();  
+        }
+
+        return word;
     }
-     return word;
-     }
 
     public int size() {
         var length = 0;
 
         // Actualizar
-        //Material de la clase con ayuda de ChatGPT
+        // //Material de la clase con ayuda de ChatGPT
         StackNode current = _head;
         while (current != null) {
             length++;
